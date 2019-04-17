@@ -1,14 +1,15 @@
-// const mysql = require('promise-mysql');
-import mysql from 'promise-mysql';
-require('dotenv').config();
+import dotenv from "dotenv";
+import mysql from "promise-mysql";
 
-const config : Object = {
+dotenv.config();
+
+const config: object = {
+    connectionLimit: 100,
+    database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
+    password: process.env.DB_PASS,
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_DATABASE,
-    connectionLimit: 100,
 };
 
 const pool = mysql.createPool(config);
