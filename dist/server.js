@@ -14,6 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const koa_1 = __importDefault(require("koa"));
 const koa_pug_1 = __importDefault(require("koa-pug"));
 const koa_static_1 = __importDefault(require("koa-static"));
+const koaBody = require("koa-body");
 const routes = require("./routes");
 const app = new koa_1.default();
 const pug = new koa_pug_1.default({
@@ -30,6 +31,7 @@ app.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
         ctx.body = `oh noes! ${err.message}`;
     }
 }));
+app.use(koaBody());
 app.use(koa_static_1.default("."));
 app.use(routes);
 const PORT = process.env.PORT || 3000;

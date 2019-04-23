@@ -4,6 +4,7 @@ import Koa from "koa";
 import Pug from "koa-pug";
 import serve from "koa-static";
 
+import koaBody = require("koa-body");
 import routes = require("./routes");
 
 const app = new Koa();
@@ -23,6 +24,7 @@ app.use(async (ctx, next) => {
     }
 });
 
+app.use(koaBody());
 app.use(serve("."));
 app.use(routes);
 

@@ -1,7 +1,8 @@
-class CardController {
-    constructor() {}
+import {BaseContext} from "koa";
+import pool from "../db";
 
-    async all(ctx) {
+class CardController {
+    public async all(ctx: BaseContext) {
         const sql = "SELECT * FROM card ORDER BY category";
         try {
             const data = await pool.query(sql);
@@ -12,7 +13,7 @@ class CardController {
         }
     }
 
-    async random(ctx) {
+    public async random(ctx: BaseContext) {
         let sql;
         let category = ctx.params.category;
 
@@ -30,7 +31,7 @@ class CardController {
         }
     }
 
-    async newCard(ctx) {
+    public async newCard(ctx: BaseContext) {
         const request = ctx.request.body;
         try {
             const sql = `INSERT INTO card set ?`;
