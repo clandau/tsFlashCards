@@ -2,7 +2,6 @@ import koaBody from "koa-body";
 import Router from "koa-router";
 
 import CardController from "./controllers/card";
-import pool from "./db";
 
 const router = new Router();
 
