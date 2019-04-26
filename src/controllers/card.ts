@@ -1,9 +1,10 @@
 import {BaseContext} from "koa";
 import pool from "../db";
+import queries from "../queries/queries";
 
 class CardController {
     public async all(ctx: BaseContext) {
-        const sql = "SELECT * FROM card ORDER BY category";
+        const sql = queries.getAllCards;
         try {
             const data = await pool.query(sql);
             ctx.status = 200;
@@ -18,9 +19,9 @@ class CardController {
         let category = ctx.params.category;
 
         if (!category) {
-            sql = "SELECT category, sideA, sideB FROM card ORDER BY RAND() LIMIT 1";
+            sql = queries.getRandomCard;
         } else {
-            sql = "SELECT category, sideA, sideB FROM card WHERE category=? ORDER BY RAND() LIMIT 1";
+            sql = queries.getRandomCardWithCategory;
         }
         try {
             const data = await pool.query(sql);
@@ -34,7 +35,7 @@ class CardController {
     public async newCard(ctx: BaseContext) {
         const request = ctx.request.body;
         try {
-            const sql = `INSERT INTO card set ?`;
+            const sql = queries.addNewCard;
             await pool.query(sql, [request]);
             ctx.render("index", { message: "Sucessfully added new card to database." });
         } catch (err) {

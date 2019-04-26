@@ -14,9 +14,6 @@ router.get("/all", CardController.all);
 
 router.get("/random", CardController.random);
 
-// router.post("/new", koaBody(), async (ctx) => {
-//     await CardController.newCard(ctx);
-// });
 router.post("/new", CardController.newCard);
 
 export = router.routes();

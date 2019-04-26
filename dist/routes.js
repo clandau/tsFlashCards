@@ -19,8 +19,5 @@ router.get("/", (ctx) => __awaiter(this, void 0, void 0, function* () {
 }));
 router.get("/all", card_1.default.all);
 router.get("/random", card_1.default.random);
-// router.post("/new", koaBody(), async (ctx) => {
-//     await CardController.newCard(ctx);
-// });
 router.post("/new", card_1.default.newCard);
 module.exports = router.routes();

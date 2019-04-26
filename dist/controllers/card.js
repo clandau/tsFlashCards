@@ -12,10 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = __importDefault(require("../db"));
+const queries_1 = __importDefault(require("../queries/queries"));
 class CardController {
     all(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "SELECT * FROM card ORDER BY category";
+            const sql = queries_1.default.getAllCards;
             try {
                 const data = yield db_1.default.query(sql);
                 ctx.status = 200;
@@ -31,7 +32,7 @@ class CardController {
             let sql;
             let category = ctx.params.category;
             if (!category) {
-                sql = "SELECT category, sideA, sideB FROM card ORDER BY RAND() LIMIT 1";
+                sql = queries_1.default.getRandomCard;
             }
             else {
                 sql = "SELECT category, sideA, sideB FROM card WHERE category=? ORDER BY RAND() LIMIT 1";
