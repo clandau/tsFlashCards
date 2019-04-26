@@ -35,12 +35,16 @@ class CardController {
                 sql = queries_1.default.getRandomCard;
             }
             else {
-                sql = "SELECT category, sideA, sideB FROM card WHERE category=? ORDER BY RAND() LIMIT 1";
+                sql = queries_1.default.getRandomCardWithCategory;
             }
             try {
                 const data = yield db_1.default.query(sql);
-                category = data[0].category;
-                ctx.render("card", { cardData: data, category });
+                // if (!category) {
+                //     ctx.render("card", { cardData: data });
+                // } else {
+                //     ctx.render("card", { cardData: data, category });
+                // }
+                ctx.render("card", { cardData: data });
             }
             catch (err) {
                 ctx.throw(400, `${err}`);
@@ -51,7 +55,7 @@ class CardController {
         return __awaiter(this, void 0, void 0, function* () {
             const request = ctx.request.body;
             try {
-                const sql = `INSERT INTO card set ?`;
+                const sql = queries_1.default.addNewCard;
                 yield db_1.default.query(sql, [request]);
                 ctx.render("index", { message: "Sucessfully added new card to database." });
             }

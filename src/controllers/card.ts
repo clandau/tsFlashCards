@@ -25,8 +25,12 @@ class CardController {
         }
         try {
             const data = await pool.query(sql);
-            category = data[0].category;
-            ctx.render("card", { cardData : data, category });
+            // if (!category) {
+            //     ctx.render("card", { cardData: data });
+            // } else {
+            //     ctx.render("card", { cardData: data, category });
+            // }
+            ctx.render("card", { cardData : data });
         } catch (err) {
             ctx.throw(400, `${err}`);
         }

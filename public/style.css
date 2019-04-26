@@ -68,9 +68,8 @@ a {
   color: black
 }
 
-a#nextCardLink {
-  display: none;
-}
+a#nextCardLink { display: none; }
+a#nextCardCatLink { display: none; }
 
 h2 {
   text-align: left;

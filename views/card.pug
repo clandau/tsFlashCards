@@ -11,6 +11,7 @@ block content
                     document.getElementById('sideB').style.display=('block')
                     document.getElementById('nextCardLink').style.display=('block')
                     document.getElementById('sideBbutton').style.display=('none')
+                    document.getElementById('nextCardCatLink').style.display=('block')
                     }
                     
             button(href='#' id='sideBbutton' onclick='showHidden()') Show Side B
@@ -18,6 +19,5 @@ block content
                 h2 Side B
                 p #{cardData[0].sideB}
                 div 
-            if category
-                a(id='nextCardLink' href='/random/?category=' + category) Get a new card
-                a(id='nextCardLink' href='/random/') Get a new card
+            a(id='nextCardLink' href='/random/') Get a new card
+            a(id='nextCardCatLink' href='/random/?category=' + cardData[0].category) Get a new card in the same category
