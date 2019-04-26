@@ -16,7 +16,7 @@ class CardController {
 
     public async random(ctx: BaseContext) {
         let sql;
-        let category = ctx.params.category;
+        const category = ctx.params.category;
 
         if (!category) {
             sql = queries.getRandomCard;
@@ -25,11 +25,6 @@ class CardController {
         }
         try {
             const data = await pool.query(sql);
-            // if (!category) {
-            //     ctx.render("card", { cardData: data });
-            // } else {
-            //     ctx.render("card", { cardData: data, category });
-            // }
             ctx.render("card", { cardData : data });
         } catch (err) {
             ctx.throw(400, `${err}`);
