@@ -7,14 +7,14 @@ block content
                 h2 Side A
                 p #{cardData[0].sideA}
             script.
-                function showHidden() {
-                    document.getElementById('sideB').style.display=('block')
-                    document.getElementById('nextCardLink').style.display=('block')
-                    document.getElementById('sideBbutton').style.display=('none')
-                    document.getElementById('nextCardCatLink').style.display=('block')
-                    }
+                function sideBelems() {
+                    document.getElementById('sideB').style.display=('block');
+                    document.getElementById('nextCardLink').style.display=('block');
+                    document.getElementById('sideBbutton').style.display=('none');
+                    document.getElementById('nextCardCatLink').style.display=('block');
+                }
                     
-            button(href='#' id='sideBbutton' onclick='showHidden()') Show Side B
+            button(href='#' id='sideBbutton' onclick='sideBelems()') Show Side B
             div(id='sideB')
                 h2 Side B
                 p #{cardData[0].sideB}
