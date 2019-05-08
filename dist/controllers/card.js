@@ -19,8 +19,7 @@ class CardController {
             const sql = queries_1.default.getAllCards;
             try {
                 const data = yield db_1.default.query(sql);
-                ctx.status = 200;
-                ctx.body = data;
+                ctx.render("allCards", { cardList: data });
             }
             catch (err) {
                 ctx.throw(400, `${err}`);

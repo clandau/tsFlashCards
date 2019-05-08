@@ -7,8 +7,7 @@ class CardController {
         const sql = queries.getAllCards;
         try {
             const data = await pool.query(sql);
-            ctx.status = 200;
-            ctx.body = data;
+            ctx.render("allCards", {cardList : data});
         } catch (err) {
             ctx.throw(400, `${err}`);
         }

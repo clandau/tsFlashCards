@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    body
+        h1 Card List
+        table
+            tr
+                th Category
+                th Side A
+                th Side B
+                th Id Number
+            for card in cardList
+                tr
+                    td= card.category
+                    td= card.sideA
+                    td= card.sideB
+                    td= card.idNumber
