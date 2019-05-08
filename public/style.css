@@ -4,11 +4,10 @@ body {
     color: #222;
     background-color: #f5f5f5;
     font-size: 20px;
+    white-space: pre-wrap;
   }
 
-.container {
-    text-align: center;
-}
+.container { text-align: center; }
 
 .form {
     margin: 10px auto;
@@ -46,9 +45,7 @@ button {
     cursor: pointer;
   }
 
-div#sideA {
-  min-height: 200px;
-}
+div#sideA { min-height: 200px; }
 
 div#sideB {
   display : none;
@@ -63,14 +60,18 @@ div#sideB {
   font-size: 18px;
   }
 
-a {
-  /* text-decoration: none; */
-  color: black
-}
+a { color: black }
 
 a#nextCardLink { display: none; }
 a#nextCardCatLink { display: none; }
 
-h2 {
-  text-align: left;
+h2 { text-align: left; }
+
+table { border-collapse: collapse; }
+
+table, th, td {
+  border: 1px solid black;
+  font-size: 15px;
 }
+
+th, td { padding: 3px; }
