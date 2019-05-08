@@ -33,6 +33,11 @@ app.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
         ctx.body = `oh noes! ${err.message}`;
     }
 }));
+// logging url
+app.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
+    console.log(`${new Date().toLocaleTimeString()} url ${ctx.url}`);
+    yield next();
+}));
 app.use(koaBody());
 app.use(router.routes());
 app.use(router.allowedMethods());

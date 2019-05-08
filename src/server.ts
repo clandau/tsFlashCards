@@ -26,6 +26,12 @@ app.use(async (ctx, next) => {
     }
 });
 
+// logging url
+app.use(async (ctx, next) => {
+    console.log(`${new Date().toLocaleTimeString()} url ${ctx.url}`);
+    await next();
+});
+
 app.use(koaBody());
 app.use(router.routes());
 app.use(router.allowedMethods());
