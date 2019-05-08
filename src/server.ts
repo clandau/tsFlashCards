@@ -2,12 +2,14 @@
 
 import Koa from "koa";
 import Pug from "koa-pug";
+import Router from "koa-router";
 import serve from "koa-static";
 
 import koaBody = require("koa-body");
 import routes = require("./routes");
 
 const app = new Koa();
+const router = new Router();
 
 const pug = new Pug({
     app,
@@ -25,6 +27,8 @@ app.use(async (ctx, next) => {
 });
 
 app.use(koaBody());
+app.use(router.routes());
+app.use(router.allowedMethods());
 app.use(serve("."));
 app.use(routes);
 

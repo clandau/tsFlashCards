@@ -29,7 +29,7 @@ class CardController {
     random(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
             let sql;
-            const category = ctx.params.category;
+            const category = ctx.query.category;
             if (!category) {
                 sql = queries_1.default.getRandomCard;
             }
@@ -37,7 +37,7 @@ class CardController {
                 sql = queries_1.default.getRandomCardWithCategory;
             }
             try {
-                const data = yield db_1.default.query(sql);
+                const data = yield db_1.default.query(sql, category);
                 ctx.render("card", { cardData: data });
             }
             catch (err) {
